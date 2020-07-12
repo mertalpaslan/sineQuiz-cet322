@@ -40,8 +40,8 @@ export class Quizzes extends Component {
 
         return (
             <div>
-                <h1 id="tabelLabel" >Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server.</p>
+                <h1 id="tabelLabel" >Available Quizzes</h1>
+                <p>Select one and start to solve.</p>
                 {contents}
             </div>
         );
