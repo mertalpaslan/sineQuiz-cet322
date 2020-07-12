@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Button } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 function classNameChanger(id, classname) {
     const element = document.getElementById(id);
@@ -12,7 +13,7 @@ export class Quiz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quiz: {}, current_question: {}, current_question_count: 0, loading: true, question_count: 0, isFinished: false
+            quiz: {}, current_question: {}, current_question_count: 0, loading: true, question_count: 0, isFinished: false, true_answer_count: 0
         };
         this.nextQuestion = this.nextQuestion.bind(this);
     }
@@ -69,7 +70,14 @@ export class Quiz extends Component {
             return (<p><em>Loading...</em></p>)
         }
         else if (this.state.isFinished) {
-            return <p>quiz over</p>
+            return (
+                <div>
+                <h1>Quiz is over.</h1>
+                    <p> You got <b>{this.state.true_answer_count}</b> correct answers out of <b>{this.state.quiz.questions.length}</b> questions. </p>
+                    <p>Overall success: <b>%{this.state.true_answer_count / this.state.quiz.questions.length * 100}</b></p>
+                    <Button tag={Link} className="text-dark" to="/quizzes">Take a new Quiz</Button>
+                </div>
+                );
         }
         else {
             return (

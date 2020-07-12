@@ -52,9 +52,9 @@ export function AddQuiz({ history }) {
 
     return (
         <>
-            <label>Enter quiz name</label>
-            <input type="text" value={name} onChange={a => setName(a.target.value)} />
-            <label>Enter description</label>
+            <label>Enter quiz name</label><br />
+            <input type="text" value={name} onChange={a => setName(a.target.value)} /><br />
+            <label>Enter description</label><br />
             <input type="text" value={description} onChange={a => setDesc(a.target.value)} />
 
             <hr />
@@ -62,14 +62,14 @@ export function AddQuiz({ history }) {
                 questions.map((e, j) => {
                     return (
                         <div key={j}>
-                            <label>Enter question body</label>
-                            <input type="text" value={e.body} onChange={a => setQuestionBody(j, a.target.value)} />
-                            <label>Enter question options</label>
+                            <label>Enter question body</label><br />
+                            <input type="text" value={e.body} onChange={a => setQuestionBody(j, a.target.value)} /><br /><br />
+                            <label>Enter question options</label><br /><br />
                             {e.answers.map((x, i) =>
                                 <div>
-                                    <label>Enter option</label>
+                                    <label>Enter option body</label><br />
                                     <input id={`body${i}`} type="text" value={e.answers[i]["body"]} onChange={a => setOptionBody(j, i, a.target.value)} />
-                                    <label>true</label>
+                                    <label>Correct Answer</label>
                                     <input id={`desc${i}`} type="checkbox" checked={e.answers[i]["isCorrect"]} onChange={a => setOptionBool(j, i)} />
                                 </div>
                             )}
@@ -84,7 +84,7 @@ export function AddQuiz({ history }) {
             <button onClick={() => setQuestions([...questions, { body: "", answers: [{ body: "", isCorrect: false }, { body: "", isCorrect: false }, { body: "", isCorrect: false }, { body: "", isCorrect: false }] }])}>Add question</button>
 
 
-            <button onClick={handleSubmit}>Send data!</button>
+            <button onClick={handleSubmit}>Save Quiz</button>
         </>
     );
 }
